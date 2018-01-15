@@ -2,22 +2,24 @@
 // <p>Find me in app/views/movies/index.html.erb</p>
 -#  This file is app/views/movies/index.html.haml
 
-%h1 Welcome to Movies#index page
-%p Find me in app/views/movies/index.html.erb
+%h1.title Welcome to Movies collection page
+%h1 All movies are listed here, Enjoy
 
-%table{:border => 1}
+%table#movies
   %tbody
     %tr
-      %td Title
-      %td Rating
-      %td Description
-      %td Release Date
-      %td More Info
-    - @movies.each do |m|
-      %tr
-        %td= m.title
-        %td= m.rating
-        %td= m.description
-        %td= m.release_date
-        %td= link_to "More about #{m.title}", movie_path(m)
-
+      %th Title
+      %th Rating
+      %th Description
+      %th Release Date
+      %th More Info
+    %tbody
+      -# - @movies.each do |m|
+      -#//   %tr
+      -#//     %td= m.title
+      -#//     %td= m.rating
+      -#//     %td= m.description
+      -#//     %td= m.release_date
+      -#//     %td= link_to "More about #{m.title}", movie_path(m)
+      = render :partial => 'movie', :collection => @movies
+= link_to 'Add new movie', new_movie_path

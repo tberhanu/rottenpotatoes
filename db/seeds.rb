@@ -10,13 +10,13 @@
 # Seed the RottenPotatoes DB with some movies.
 more_movies = [
   {:title => 'Aladdin', :rating => 'G',
-    :release_date => '25-Nov-1992'},
+    :release_date => '25-Nov-1992', :description => "suspense movie"},
   {:title => 'When Harry Met Sally', :rating => 'R',
-    :release_date => '21-Jul-1989'},
+    :release_date => '21-Jul-1989', :description => "romance movie"},
   {:title => 'The Help', :rating => 'PG-13',
-    :release_date => '10-Aug-2011'},
+    :release_date => '10-Aug-2011', :description => "suspense movie of the year"},
   {:title => 'Raiders of the Lost Ark', :rating => 'PG',
-    :release_date => '12-Jun-1981'}
+    :release_date => '12-Jun-1981', :description => "Horror movie"}
 ]
 
 more_movies.each do |movie|
