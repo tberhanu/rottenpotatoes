@@ -1,6 +1,23 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    
+    if params[:sort] == 'title'
+      @movies = Movie.all.sort_by { |movie| movie.title.downcase}
+    elsif params[:sort] == 'release_date'
+      @movies = Movie.all.sort_by { |movie| movie.release_date}
+    elsif params[:sort] == 'rating'
+      @movies = Movie.all.sort_by { |movie| movie.rating.downcase}
+    else
+      @movies = Movie.all
+    end
+    
+    @all_ratings = Movie.all_ratings
+    @default_rating_value = Hash[@all_ratings.map {|rating| [rating, "1"]}]
+    @selected_rating_value = params[:hash] || session[:hash] || @default_rating_value
+    session[:hash] = @selected_rating_value
+    
+    @movies = @movies.select { |movie| @selected_rating_value.include?(movie.rating)}
+    
   end
   
   def show

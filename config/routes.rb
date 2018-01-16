@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   # get 'movies/index'
   resources :movies
-  root :to => redirect('/movies')   # get '/', to: 'movies#index'
-
+  # root :to => redirect('/movies')   # get '/', to: 'movies#index'
+  get '/', to: 'movies#index'
+  # get 'movies' => 'movies#pickyshow', as: 'pickylist'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
