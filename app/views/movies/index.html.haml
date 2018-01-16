@@ -16,10 +16,10 @@
 %table#movies
   %tbody
     %tr
-      %th= link_to 'Title', movies_path(:sort => 'title')
-      %th= link_to 'Rating', movies_path(:sort => 'rating')
+      %th{:class => @bright1}= link_to 'Title', movies_path(:sort => 'title')
+      %th{:class => @bright2}= link_to 'Rating', movies_path(:sort => 'rating')
       %th Description
-      %th= link_to 'Release Date', movies_path(:sort => 'release_date')
+      %th{:class => @bright3}= link_to 'Release Date', movies_path(:sort => 'release_date')
       %th More Info
     %tbody
       -# - @movies.each do |m|

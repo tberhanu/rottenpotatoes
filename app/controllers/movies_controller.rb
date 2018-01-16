@@ -3,10 +3,16 @@ class MoviesController < ApplicationController
     
     if params[:sort] == 'title'
       @movies = Movie.all.sort_by { |movie| movie.title.downcase}
-    elsif params[:sort] == 'release_date'
-      @movies = Movie.all.sort_by { |movie| movie.release_date}
+      @bright1 = 'hilite'
+      
     elsif params[:sort] == 'rating'
       @movies = Movie.all.sort_by { |movie| movie.rating.downcase}
+      @bright2 = 'hilite'
+      
+    elsif params[:sort] == 'release_date'
+      @movies = Movie.all.sort_by { |movie| movie.release_date}
+      @bright3 = 'hilite'
+    
     else
       @movies = Movie.all
     end
