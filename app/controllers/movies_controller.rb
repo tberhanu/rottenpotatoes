@@ -36,9 +36,14 @@ class MoviesController < ApplicationController
   end
   
   def create
-    @movie = Movie.create!(movie_params)
-    flash[:notice] = "Movie with title called #{@movie.title} is just created successfully."
-    redirect_to movies_path
+    # @movie = Movie.create!(movie_params)
+    @movie = Movie.new(movie_params)
+    if @movie.save
+      flash[:notice] = "Movie with title called #{@movie.title} is just created successfully."
+      redirect_to movies_path
+    else
+      render 'new'
+    end
   end
   
   def edit
@@ -54,10 +59,15 @@ class MoviesController < ApplicationController
   
   def update
     @movie = Movie.find params[:id]
-    @movie.update_attributes!(movie_params) #here we need the whole hash of attributes
-    flash[:notice] = "You successfully updated movie with title '#{@movie.title}'."
-    redirect_to movie_path(@movie)
+    # @movie.update_attributes!(movie_params) #here we need the whole hash of attributes
+    if @movie.update_attributes(movie_params)
+      flash[:notice] = "You successfully updated movie with title '#{@movie.title}'."
+      redirect_to movie_path(@movie)
+    else 
+      render 'edit'
+    end
   end
+  
   private
   
     def movie_params
