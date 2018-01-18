@@ -14,4 +14,6 @@
 = link_to "Edit #{@movie.title}", edit_movie_path(@movie)
 %br
 %br
-= link_to "Delete #{@movie.title}", movie_path(@movie), :method => :delete
+// = link_to "Delete #{@movie.title}", movie_path(@movie), :method => :delete
+= link_to "Delete #{@movie.title}", movie_path(@movie), method: :delete, data: {confirm: 'Are you sure?' }
+
